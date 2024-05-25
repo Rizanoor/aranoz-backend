@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\CategoryController;
+use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -14,5 +15,6 @@ Route::post('v1/login', [UserController::class, 'login']);
 Route::post('v1/register', [UserController::class, 'register']);
 Route::post('v1/logout', [UserController::class, 'logout']);
 
-Route::post('v1/category', [CategoryController::class, 'fetch']);
+Route::get('v1/category', [CategoryController::class, 'fetch']);
+Route::get('v1/product', [ProductController::class, 'fetch']);
 
