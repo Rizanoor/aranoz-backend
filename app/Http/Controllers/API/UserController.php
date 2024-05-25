@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use App\Helpers\ResponseFormatter;
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules\Password as PasswordRule;
+use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
@@ -18,7 +19,7 @@ class UserController extends Controller
             $request->validate([
                 'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'password' => ['required', 'string', PasswordRule::defaults()]
+                'password' => ['required', 'string', Password::defaults()]
             ]);
 
             User::create([
@@ -77,5 +78,4 @@ class UserController extends Controller
             ],'Authentication Failed', 500);
         }
     }
-
 }
