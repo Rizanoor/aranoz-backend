@@ -22,6 +22,9 @@
                         <x-nav-link href="{{ route('dashboard.product.index') }}" :active="request()->routeIs('dashboard.product.index')">
                             {{ __('Product') }}
                         </x-nav-link>
+                        <x-nav-link href="{{ route('dashboard.gallery.index') }}" :active="request()->routeIs('dashboard.gallery.index')">
+                            {{ __('Gallery') }}
+                        </x-nav-link>
                     @endif
                 </div>
             </div>
