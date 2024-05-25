@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -11,7 +12,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('pages.category.index');
+        $category = Category::paginate(10);
+
+        return view('pages.category.index', [
+            'category' => $category
+        ]);
     }
 
     /**
@@ -19,7 +24,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.category.create');
     }
 
     /**
@@ -27,7 +32,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        Category::create($data);
+
+        return redirect()->route('dashboard.category.index');
     }
 
     /**
@@ -41,24 +49,31 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Category $category)
     {
-        //
+        return view('pages.category.edit', [
+            'item' => $category
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $data = $request->all();
+        $category->update($data);
+
+        return redirect()->route('dashboard.category.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return redirect()->route('dashboard.category.index');
     }
 }
