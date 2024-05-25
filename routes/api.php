@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -9,6 +10,9 @@ use Illuminate\Support\Facades\Route;
 // })->middleware('auth:sanctum');
 
 
-Route::post('login', [UserController::class, 'login']);
-Route::post('register', [UserController::class, 'register']);
-Route::post('logout', [UserController::class, 'logout']);
+Route::post('v1/login', [UserController::class, 'login']);
+Route::post('v1/register', [UserController::class, 'register']);
+Route::post('v1/logout', [UserController::class, 'logout']);
+
+Route::post('v1/category', [CategoryController::class, 'fetch']);
+
