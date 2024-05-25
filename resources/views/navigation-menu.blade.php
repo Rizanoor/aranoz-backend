@@ -16,17 +16,17 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     @if (Auth::user()->roles == "ADMIN")
-                        <x-nav-link href="{{ route('dashboard.category.index') }}" :active="request()->routeIs('dashboard.category.index')">
+                        <x-nav-link href="{{ route('dashboard.category.index') }}" :active="request()->routeIs('dashboard.category.*')">
                             {{ __('Category') }}
                         </x-nav-link>
-                        <x-nav-link href="{{ route('dashboard.product.index') }}" :active="request()->routeIs('dashboard.product.index')">
+                        <x-nav-link href="{{ route('dashboard.product.index') }}" :active="request()->routeIs('dashboard.product.*')">
                             {{ __('Product') }}
                         </x-nav-link>
-                        <x-nav-link href="{{ route('dashboard.gallery.index') }}" :active="request()->routeIs('dashboard.gallery.index')">
+                        <x-nav-link href="{{ route('dashboard.gallery.index') }}" :active="request()->routeIs('dashboard.gallery.*')">
                             {{ __('Gallery') }}
                         </x-nav-link>
                     @endif
-                </div>
+                </div>                
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
