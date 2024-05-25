@@ -14,11 +14,10 @@ class CategoryController extends Controller
         $id = $request->input('id');
         $limit = $request->input('limit', 6);
         $name = $request->input('name');
-        $show_product = $request->input('show_product');
 
         if($id)
         {
-            $category = Category::with(['products'])->find($id);
+            $category = Category::find($id);
 
             if($category)
                 return ResponseFormatter::success(
@@ -38,10 +37,7 @@ class CategoryController extends Controller
         if($name)
             $category->where('name', 'like', '%' . $name . '%');
 
-        if($show_product)
-            $category->with('products');
-
-        $category->withCount('products');
+        $category->count();
 
         return ResponseFormatter::success(
             $category->paginate($limit),
