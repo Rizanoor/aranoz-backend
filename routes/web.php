@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,6 +20,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
             Route::resource('product', ProductController::class);
             Route::resource('gallery', GalleryController::class);
             Route::resource('category', CategoryController::class);
+            Route::resource('transaction', TransactionController::class);
         });
     });
 });
