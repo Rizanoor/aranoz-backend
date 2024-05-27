@@ -4,26 +4,26 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Transaction extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'users_id', 
-        'transaction_status', 
+        'address',
         'total_price',
+        'status'
     ];
-
-    protected $hidden = [];
 
     public function user()
     {
         return $this->belongsTo(User::class, 'users_id', 'id');
     }
 
-    public function transactionDetail()
+    public function items()
     {
-        return $this->hasMany(TransactionDetail::class, 'id', 'transaction_detail_id');
+        return $this->hasMany(TransactionItem::class, 'transactions_id', 'id');
     }
 }
