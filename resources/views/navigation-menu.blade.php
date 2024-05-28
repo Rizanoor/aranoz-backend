@@ -28,6 +28,9 @@
                         <x-nav-link href="{{ route('dashboard.transaction.index') }}" :active="request()->routeIs('dashboard.transaction.*')">
                             {{ __('Transaction') }}
                         </x-nav-link>
+                        <x-nav-link href="{{ route('dashboard.user.index') }}" :active="request()->routeIs('dashboard.user.*')">
+                            {{ __('Users') }}
+                        </x-nav-link>
                     @endif
                 </div>                
             </div>
