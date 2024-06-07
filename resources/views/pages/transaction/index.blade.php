@@ -75,6 +75,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{$transaction->links()}}
                     </div>
                 @endif
             </div>
